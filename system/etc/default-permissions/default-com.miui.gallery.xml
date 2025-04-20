@@ -4,7 +4,6 @@
         <permission name="android.permission.POST_NOTIFICATIONS" fixed="false"/>
         <permission name="android.permission.READ_EXTERNAL_STORAGE" fixed="false"/>
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" fixed="false"/>
-        <permission name="android.permission.READ_MEDIA_AUDIO" fixed="false"/>
         <permission name="android.permission.READ_MEDIA_VIDEO" fixed="false"/>
         <permission name="android.permission.READ_MEDIA_IMAGES" fixed="false"/>
         <permission name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" fixed="false"/>
