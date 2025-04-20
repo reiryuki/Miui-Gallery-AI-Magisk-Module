@@ -203,15 +203,15 @@ fi
 
 # cleaning
 ui_print "- Cleaning..."
-#PKGS=`cat $MODPATH/package.txt`
-#if [ "$BOOTMODE" == true ]; then
-#  for PKG in $PKGS; do
-#    FILE=`find /data/app -name *$PKG*`
-#    if [ "$FILE" ]; then
-#      RES=`pm uninstall $PKG 2>/dev/null`
-#    fi
-#  done
-#fi
+PKGS=`cat $MODPATH/package.txt`
+if [ "$BOOTMODE" == true ]; then
+  for PKG in $PKGS; do
+    FILE=`find /data/app -name *$PKG*`
+    if [ "$FILE" ]; then
+      RES=`pm uninstall $PKG 2>/dev/null`
+    fi
+  done
+fi
 remove_sepolicy_rule
 ui_print " "
 
@@ -362,23 +362,42 @@ rm -f `find $MODPATH/system -type f -name extract`
 # hide
 hide_oat
 
+# function
+change_name() {
+if grep -q $NAME $FILE; then
+  ui_print "- Changing $NAME to $NAME2 at"
+  ui_print "$FILE"
+  ui_print "  Please wait..."
+  sed -i "s|$NAME|$NAME2|g" $FILE
+  ui_print " "
+fi
+}
+
 # features
 PROP=`grep_prop miui.features $OPTIONALS`
-FILE=$MODPATH/system.prop
-if [ "$PROP" == 1 ]; then
-  ui_print "- ro.product.device will be changed to cepheus"
-  ui_print "  ro.product.manufacturer will be changed to Xiaomi"
-  ui_print "  It may break some system apps and features functionality"
-  sed -i "s|#ro.product|ro.product|g" $FILE
+FILE=$MODPATH/service.sh
+if [ "$PROP" != 0 ]; then
+  FILE=`find $MODPATH/system -type f -name libnexeditorsdk.so`
+  NAME=ro.product.device
+  NAME2=ro.gallery.device
+  change_name
+  FILE=`find $MODPATH -type f -name libnex*.so`
+  NAME=ro.product.manufacturer
+  NAME2=ro.gallery.manufacturer
+  change_name
+fi
+if [ "$PROP" == 0 ]; then
+  ui_print "- Removing ro.gallery.device and ro.gallery.manufacturer"
+  ui_print "  changes..."
+  sed -i 's|resetprop -n ro.gallery.device cepheus||g' $FILE
+  sed -i 's|resetprop -n ro.gallery.manufacturer Xiaomi||g' $FILE
   ui_print " "
-elif [ "$PROP" ] && [ "$PROP" != 0 ]; then
-  ui_print "- ro.product.device will be changed to $PROP"
-  ui_print "  ro.product.manufacturer will be changed to Xiaomi"
-  ui_print "  It may break some system apps and features functionality"
-  sed -i "s|#ro.product|ro.product|g" $FILE
+elif [ "$PROP" ] && [ "$PROP" != 1 ]; then
+  ui_print "- ro.gallery.device will set to $PROP"
   sed -i "s|cepheus|$PROP|g" $FILE
   ui_print " "
 fi
+
 
 
 

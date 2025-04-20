@@ -6,7 +6,6 @@
 
 ## Descriptions
 - Gallery app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
-- The apk is unmodified because modifying the apk will break the Google Photos Backup feature
 
 ## Sources
 - https://apkmirror.com com.miui.gallery by Xiaomi Inc.
@@ -37,6 +36,9 @@
 ## Troubleshootings
 - https://t.me/ryukinotes/19
 - Global: https://t.me/ryukinotes/34
+
+## Known Issues
+- Google Photos backup feature is broken because the apk is modified
 
 ## Support & Bug Report
 - https://t.me/ryukinotes/54
