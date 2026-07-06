@@ -5,25 +5,46 @@
 - The MIT license specified here is for the Magisk Module only, not for Miui apps.
 
 ## Descriptions
-- Gallery app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
+Gallery app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
 - https://apkmirror.com com.miui.gallery by Xiaomi Inc.
-- libmagiskpolicy.so: Kitsune Mask R6687BB53
+- libmagiskpolicy.so: Magisk (stable) 30.7 (30700)
+
+## Changelog
+
+v0.4
+- Prepare /storage/emulated/"$UID"/Android/data/com.miui.gallery/files/mounted & com.miui.gallery/cache
+- Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
+- Resets module folders/files permissions at post-fs-data
+- Move _uninstall.log to /data/adb/logs/
+
+v0.3
+- Modify MiuiGallery.apk to fix crashes and System UI visibility
+- Using ro.gallery.device and ro.gallery.manufacturer instead of ro.product.device and ro.product.manufacturer
+
+v0.2
+- Add Action button to clear app caches
+- Fix architecture detection in some weird ROMs
+- Fix bug in uninstall.sh
+- Update MiuiGallery.apk to v4.1.0.9-ai
+
+v0.1
+- Initial release
 
 ## Screenshots
-- https://t.me/ryukimodsscreenshots/12
+https://t.me/ryukimodsscreenshots/12
 
 ## Requirements
 - arm64-v8a or armeabi-v7a architecture
 - Android 8.0 (SDK 26) and up
-- Magisk or KernelSU installed
+- Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide & Download Link
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
 - Install Miui Core Magisk Module first if you are in non-Miui ROM: https://github.com/reiryuki/Miui-Core-Magisk-Module
-- Install this module https://www.pling.com/p/2221565/ via Magisk app or KernelSU app or Recovery if Magisk installed
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install Miui Gallery Editor Magisk Module: https://github.com/reiryuki/Miui-Gallery-Editor-Magisk-Module
-- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
 - If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards
@@ -37,8 +58,8 @@
 - https://t.me/ryukinotes/19
 - Global: https://t.me/ryukinotes/34
 
-## Known Issues
-- Google Photos backup feature is broken because the apk is modified
+## Known Issue
+Google Photos backup feature is broken because the apk is modified
 
 ## Support & Bug Report
 - https://t.me/ryukinotes/54
@@ -46,9 +67,9 @@
 
 ## Credits and Contributors
 - https://t.me/androidryukimodsdiscussions
-- You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
+- https://t.me/androidappsportdevelopment
 
 ## Sponsors
-- https://t.me/ryukinotes/25
+https://t.me/ryukinotes/25
 
 
